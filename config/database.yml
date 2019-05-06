@@ -1,0 +1,27 @@
+# PostgreSQL. Versions 9.1 and up are supported.
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: desenv
+  username: postgres
+  password: postgres
+  host: localhost
+  port: 5432
+  schema_search_path: completar
+
+test:
+  <<: *default
+  database: completar_test
+
+production:
+  <<: *default
+  database: completar_production
+  username: completar
+  password: <%= ENV['COMPLETAR_DATABASE_PASSWORD'] %>
