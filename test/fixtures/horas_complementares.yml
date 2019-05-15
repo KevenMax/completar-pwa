@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  categoria: one
+  atividade: one
+  descricao: MyString
+  quantidade_horas: 1.5
+  ativo: false
+
+two:
+  categoria: two
+  atividade: two
+  descricao: MyString
+  quantidade_horas: 1.5
+  ativo: false

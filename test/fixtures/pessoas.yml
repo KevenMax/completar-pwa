@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  apelido: MyString
+  matricula: 
+  campu: one
+  curso: one
+  contato: MyString
+  usuario: one
+  ativo: false
+
+two:
+  nome: MyString
+  apelido: MyString
+  matricula: 
+  campu: two
+  curso: two
+  contato: MyString
+  usuario: two
+  ativo: false

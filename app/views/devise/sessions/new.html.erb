@@ -1,0 +1,55 @@
+<center>
+  <%= image_tag('logo-azul-completa.png', class: 'logo')%>
+  <div class="container-header">
+    <h2>Bem vindo! </h2>
+    <h2>Entre para acessar sua conta </h2>
+  </div>
+</center>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="container-form">
+    <div class="field">
+      <%= f.email_field :email, autocomplete: "email",placeholder: 'E-mail', class: 'input-auth', required: true%>
+    </div>
+
+    <div class="field">
+      <%= f.password_field :password, autocomplete: "current-password", class: 'input-auth', placeholder: 'Senha', required: true %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="field-check">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me,"Lembre-me" %>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit "ENTRAR", class: 'btn btn-purple' %>
+    </div>
+  </div>
+
+  <div class="links">
+      <center>
+        <%= link_to "Esqueceu sua senha?", new_password_path(resource_name), class: 'link-auth'%>
+        <%= link_to(new_registration_path(resource_name)) do %>
+          Ainda não tem conta? <b>Cadastre-se!</b>
+        <% end %>
+      </center>
+  </div>
+
+<% end %>
+
+<script type="text/javascript">
+<% if flash[:alert].present? %>
+  setTimeout(function() {
+    toastr.options = {
+      closeButton: true,
+      progressBar: true,
+      showMethod: 'slideDown',
+      timeOut: 4000
+    };
+    toastr.error('<%= flash[:alert] %>', 'Ops...');
+  }, 000);
+<% end %>
+
+</script>

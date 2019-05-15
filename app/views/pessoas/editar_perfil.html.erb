@@ -1,0 +1,71 @@
+<div class="container-default">
+	<div class="container-header">
+		<div class="row">
+			<div class="col-2 col-sm-3">
+				<%= link_to(pessoas_perfil_path, class: 'link-back') do %>
+					<i class="fas fa-arrow-left icon-size"> </i>
+				<% end %>
+			</div>
+			<div class="col-10 col-sm-9">
+				<h2> Editar Perfil </h2>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-body">
+		<%= form_tag({controller: 'pessoas', action: 'editar'}) do %>
+			<div class="input-field">
+				<%= label_tag :matricula, 'Matrícula *' %><br>
+				<%= number_field_tag :matricula, nil, class: 'input-form', max: "999999" %>
+			</div>
+
+			<div class="input-field">
+				<%= label_tag :nome, 'Nome Completo *' %><br>
+				<%= text_field_tag :nome, nil, class: 'input-form' %>
+			</div>
+
+			<div class="input-field">
+				<%= label_tag :apelido, 'Como gostaria de ser chamado? *' %><br>
+				<%= text_field_tag :apelido, nil, class: 'input-form' %>
+			</div>
+
+			<div class="input-field">
+				<%= label_tag :curso, 'Curso *' %><br>
+				<%= select_tag(:curso, options_for_select(@cursos.collect {|c| ["#{c.nome} - #{c.campu.cidade if !c.campu.blank?}", c.id]}), {prompt: 'Selecione uma opção', class: 'input-form'}) %>
+			</div>
+
+			<div class="input-field">
+				<%= label_tag :contato, 'Contato *' %><br>
+				<%= text_field_tag :contato, nil, class: 'input-form celular' %>
+			</div>
+
+			<div class="input-field">
+				<%= label_tag :foto, 'Foto de Perfil' %><br>
+				<label class="input-form" style="padding-left: 90px; padding-top: 7px;">
+                  <div id="count">
+                    <i class="fa fa-camera" aria-hidden="true"></i> Foto
+                  </div>
+                  <%= file_field_tag :foto, accept: 'image/jpg, image/jpeg, image/png',id: 'file',class: 'input-file' %>
+                </label>
+			</div>
+
+			<%= button_tag(class: 'btn btn-purple') do %>
+				SALVAR
+			<% end %>
+		<% end %>
+	</div>
+</div>
+
+<%= stylesheet_link_tag 'pessoas' %>
+<%= javascript_include_tag 'pessoas' %>
+
+<script type="text/javascript">
+	$("input:file").change(function (){
+	    var fileName = $(this).val();
+    	if (fileName){
+      		if(fileName ==  document.getElementById("file").value){
+        		document.getElementById("count").innerHTML = "<span class='badge badge-purple'>1</span> Foto";
+      		}
+    	}
+    });
+</script>

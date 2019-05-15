@@ -39,6 +39,19 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.3.1'
 # Lib of JavaScript
 gem 'jquery-rails'
+# Authtentication 
+gem 'devise'
+# Upload of images
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+# Processing of images
+gem 'mini_magick', '~> 4.3'
+# Icons
+gem 'font-awesome-rails', '4.7.0.5'
+
+# gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+# # Processing of images
+# gem 'mini_magick', '~> 4.3'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

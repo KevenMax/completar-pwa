@@ -1,0 +1,154 @@
+p{
+	font-family: 'Comfortaa';
+}
+label{
+	font-family: 'Comfortaa';
+	color: #9479f2;
+	font-size: 14px;
+}
+a{
+	font-family: 'Comfortaa';
+	color: #9479f2;
+	font-size: 14px;
+}
+a:hover{
+	font-family: 'Comfortaa';
+	color: #9479f2;
+}
+input {
+	outline-width: 0;
+}
+h2{
+	font-family: 'Comfortaa-Bold';
+	font-size: 18px;
+	color: #9479f2;
+	margin-bottom: 3px;
+}
+
+.background-default{
+	padding-top: 40px;
+	background-image: linear-gradient(to top left, #2b8aeb, #b275f4);
+	width: 100%;
+	height: 100vh;
+	/*height: 140vh;*/
+}
+.logo{
+	padding-top: 40px;
+	width: 40%;
+	height: 40%;	
+}
+.container-header{
+	margin-top: 40px;
+}
+.container-auth{
+	padding-left: 20px;
+	padding-right: 20px;
+
+	margin-left: 35%;
+	width: 400px;
+	height: 550px;
+	border-radius: 10px;
+	border: 1px solid white;
+	background: white;
+}
+.container-form{
+	padding-top: 14px;
+}
+
+.input-auth{
+	border: 0px solid;
+	border-radius: 40px;
+	background: #d1d8fa;
+	width: 250px;
+	height: 35px;
+	text-align: center;
+	font-family: 'Comfortaa';
+	font-size: 14px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: 50px;
+}
+.field{
+	margin-top: 25px;
+}
+.field-check{
+	padding-left: 120px;
+	padding-top: 10px;
+}
+.btn-purple{
+	background: #9479f2;
+	width: 250px;
+	height: 35px;
+	text-align: center;
+	border-radius: 40px;
+	border: 0px solid;
+	color: white;
+	margin-left: 50px;
+}
+.btn-purple:hover{
+	color: white;
+}
+.links{
+	padding-top: 0;
+}
+.link-auth{
+	display: block;
+	margin-bottom: 3px;
+}
+@media (max-width: 1000px){
+	.container-auth{
+		margin-left: 30%;
+	}
+}
+
+@media (max-width: 800px){
+	.container-auth{
+		margin-left: 20%;
+	}
+}
+
+@media (max-width: 576px){
+	.background-default{
+		padding: 0;
+	}
+	.container-auth{
+		margin: 0;
+		width: 100vw;
+		height: 100vh;
+		border-radius: 0;		
+	}
+	.logo{
+		width: 45%;
+		height: 45%;
+
+		width: 160px;
+		height: 150px;
+	}
+	.input-auth{
+		width: 85%;
+		margin-left: 6.6%;
+	}
+	.btn-purple{
+		width: 85%;
+		margin-left: 6.6%;
+	}
+	.field-check{
+		padding-left: 35%;
+	}
+	.link-bottom{
+		position: relative;
+		bottom: 5%;
+	}
+	.links{
+		padding-top: 10%;
+		padding-bottom: 10%;
+	}
+	.link-auth{
+		display: block;
+		margin-bottom: 15px;
+	}
+}
+
+::placeholder{
+	color: #707070;
+};

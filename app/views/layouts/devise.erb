@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">        
+        <meta http-equiv="X-UA-compatible", content="ie-edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>Completar - Gerenciador de Horas Complementares</title>
+        <%= favicon_link_tag image_path('logo-azul.png') %>
+        
+        <%= csrf_meta_tags %>
+        
+        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+        <%= stylesheet_link_tag 'devise', media: 'all', 'data-turbolinks-track' => true %>
+    </head>
+
+    <body>
+        <div class="background-default">
+            <div class="container-auth">
+                <%= yield %>
+                <%= yield :javascript %>    
+            </div>
+        </div>
+    </body>
+</html>     

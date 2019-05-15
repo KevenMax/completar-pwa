@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html>
+
   <head>
-    <title>Completar</title>
+    <meta charset="utf-8">        
+    <meta http-equiv="X-UA-compatible", content="ie-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Completar - Gerenciador de Horas Complementares</title>
+    <%= favicon_link_tag image_path('logo-azul.png') %>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
   </head>
 
   <body>
     <%= yield %>
+    <%= render 'layouts/menu' %>
   </body>
 </html>
