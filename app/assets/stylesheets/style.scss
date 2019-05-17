@@ -45,8 +45,9 @@
   padding: 0;
   margin: 0;
   width: 100%;
-  height: 100vh;
-  margin-bottom: 60px;
+  height: auto;
+  margin-bottom: 30%;
+  
 }
 .container-default .container-header{
   padding-top: 20px;
@@ -81,7 +82,7 @@ h2{
   border-radius: 40px;
   background: #d1d8fa;
   color: #303030;
-  width: 250px;
+  width: 100%;
   height: 35px;
   padding-left: 15px;
   font-family: 'Comfortaa';
@@ -128,6 +129,25 @@ h2{
 .btn-purple:focus{
   color: white;
 }
+.btn-purple-inverse{
+  background: white;
+  width: 250px;
+  height: 35px;
+  text-align: center;
+  border: 1px #9479f2 solid;
+  border-radius: 5px;
+  color: #9479f2;
+  display: block;
+  padding-top: 5px;
+}
+.btn-purple-inverse:hover{
+  color: #9479f2;
+  text-decoration: none;
+}
+.btn-purple-inverse:focus{
+  color: #9479f2;
+  text-decoration: none;
+}
 .grafico-geral{
   margin-right: 0;
   margin-left: 13%;
@@ -154,15 +174,18 @@ input {
 
 
 .menu-horizontal{
-
   position: fixed;
-  border-top: 1px solid #e7eaec;
   bottom: 0;
   left: 0;
   padding: 10px 10% 10px 10%;
   right: 0;
   height: 60px;
-  background: #d5d5d5;
+  background: white;
+  border-radius: 15px 15px 0 0;
+  border: 1px #b275f4 solid;
+
+  border-bottom: 0px;
+  margin-top: 30%;
 
   .options {
 

@@ -1,2 +1,78 @@
-<h1>HorasComplementares#index</h1>
-<p>Find me in app/views/horas_complementares/index.html.erb</p>
+<div class="container-default">
+	<div class="container-header">
+		<div class="row">
+			<div class="col-12 col-sm-12">
+				<h2> Cadastrar Atividade </h2>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-body">
+		<%= form_for(@horas_complementar, multipart: true) do |f| %>
+			<div class="col-12 input-field" style="padding: 0;">
+				<%= f.label :categoria, 'Categoria *' %><br>
+				<%= f.select(:categoria_id, options_for_select(@categorias.collect {|c| [c.nome, c.id]}), {prompt: 'Selecione uma opção'}, class: 'input-form', required: true, onChange: "loadAtividadeCategoria('atividadeCategoria', this.value, );") %>
+			</div>
+
+			<div class="col-12 input-field" style="padding: 0;" id="atividadeCategoria">
+				<%= f.label :atividade, 'Atividade da Categoria *' %><br>
+				<%= f.select(:atividade_id, options_for_select(@categorias.collect {|c| [c.nome, c.id]}), {prompt: 'Selecione uma opção'}, class: 'input-form atividade-categoria', required: true, disabled: true) %>
+			</div>
+
+			<div class="col-12 input-field" style="padding: 0;">
+				<%= f.label :descricao, 'Descrição *' %><br>
+				<%= f.text_field :descricao, class: 'input-form ', required: true %>
+			</div>
+
+			<div class="col-12 input-field" style="padding: 0;">
+				<%= f.label :quantidade_horas, 'Quantidade de Horas *' %><br>
+				<%= f.text_field :quantidade_horas, class: 'input-form input-hours', required: true, maxlength: '6' %>
+			</div>
+
+			<div class="col-12 input-field"  style="padding: 0;">
+				<%= f.label :anexo, 'Anexo' %>
+				<label class="input-form" style="padding-left: 30px; padding-top: 7px;">
+					<!-- <center> -->
+		              	<div id="count">
+		                	<i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+		              	</div>
+		            <!-- </center> -->
+	            	<%= f.file_field :anexo, accept: 'application/pdf, image/jpg, image/jpeg, image/png',id: 'file', class: 'input-file' %>
+                </label>
+			</div>
+
+			<div class="col-12 input-field" style="padding: 0;">
+				<%= button_tag(class: 'btn btn-purple', style: 'width: 100%;
+					
+				end') do %>
+					SALVAR
+				<% end %>
+			</div>
+
+		<% end %>
+	</div>
+</div>
+<%= stylesheet_link_tag 'horas_complementares' %>
+<%= javascript_include_tag 'horas_complementares' %>
+<
+
+<script type="text/javascript">
+
+	<% if !flash[:notice].blank? %>
+		alertComplete("<%= flash[:notice] %>");
+	<% end %>
+	
+	$("input:file").change(function (){
+	    var fileName = $(this).val();
+    	if (fileName){
+      		if(fileName ==  document.getElementById("file").value){
+        		document.getElementById("count").innerHTML = "<span class='badge badge-purple'>1</span> Anexo";
+      		}
+    	}
+    });
+
+    $(".input-hours").maskMoney({
+        decimal: ','
+    });
+	
+</script>

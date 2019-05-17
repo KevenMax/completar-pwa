@@ -2,6 +2,9 @@ class HorasComplementar < ApplicationRecord
   belongs_to :categoria
   belongs_to :atividade
 
+  mount_uploader :anexo, AnexoUploader
+
+
   def self.categoria_horas_realizadas_limite(pessoa_id)
   	pessoa = Pessoa.find(pessoa_id)
   	categorias = pessoa.curso.categorias.where(ativo: true).order(:nome)

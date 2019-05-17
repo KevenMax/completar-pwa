@@ -1,8 +1,3 @@
-//= require c3.min.js
-//= require d3.min.js
-//= require raphael-min.js
-//= require justgage.min.js
-
 function alertComplete(notice){
 	setTimeout(function() {
       toastr.options = {

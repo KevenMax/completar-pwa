@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  get 'horas_complementares/index'
+  resources :horas_complementares do
+    collection do 
+      get 'carregar_atividades_categoria'
+    end
+  end
+  # get 'horas_complementares/index'
+  # post 'horas_complementares/create'
+  # post 'horas_complementares/update'
 
   get 'pessoas/index'
   get 'pessoas/cadastro_final'

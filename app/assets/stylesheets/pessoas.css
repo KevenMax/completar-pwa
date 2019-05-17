@@ -1,3 +1,6 @@
+hr{
+	margin: 0;
+}
 .image-profile{
 	border-radius: 100%;
 	margin-left: 35%;
@@ -31,7 +34,9 @@
 	font-family: 'Comfortaa';
 	text-align: center;
 }
-
+.container-label{
+	margin-bottom: 12px;
+}
 .container-info .label-attr{
 	font-family: 'Comfortaa';
 	color: #B275F4;
@@ -45,15 +50,51 @@
 
 .container-info .label-info{
 	font-family: 'Comfortaa';
-	color: #C0C0C0;
+	color: #838383;
 	font-size: 12px;
 	text-align: right;
-	 position: relative;
-	 margin: 0;
+	margin: 0;
 	margin-left: 0;
 	display: inline-block;
 }
 
+.container-hours-left{
+	margin: 0;
+	text-align: center;
+	padding: 0 0 0 25px;
+}
+.container-hours-right{
+	margin: 0; 
+	text-align: center; 
+	padding: 0 25px 0 0;
+}
+.container-hours-center{
+	padding: 0; 
+	padding-left: 10px; 
+	padding-right: 10px;
+}
+.container-info .label-hours{
+	font-family: 'Comfortaa';
+	font-size: 14px;
+}
+
+.container-info .label-time{
+	color: #B275F4;
+	display: block;
+}
+
+.container-info .label-complete{
+	color: #838383;
+	display: block;
+}
+.line-vertical{
+	border-left: 1px #e5e5e5 solid;
+	height: 40px;
+	width: 1px;
+}
+.container-sign-out{
+	margin-top: 10px;
+}
 @media(min-width: 402px){
 	.image-profile{
 		margin-left: 40%;

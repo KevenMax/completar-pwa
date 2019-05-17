@@ -20,7 +20,7 @@ module Completar
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    config.assets.precompile += [ 'devise.css', 'pessoas.css', 'dashboards.scss']
-    config.assets.precompile += [ 'devise.js', 'pessoas.js', 'dashboards.js' ]
+    config.assets.precompile += [ 'devise.css', 'pessoas.css', 'dashboards.scss', 'horas_complementares.scss']
+    config.assets.precompile += [ 'devise.js', 'pessoas.js', 'dashboards.js', 'horas_complementares.js' ]
   end
 end

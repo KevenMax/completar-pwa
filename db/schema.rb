@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_12_123148) do
+ActiveRecord::Schema.define(version: 2019_05_15_184531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2019_05_12_123148) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "pessoa_id"
+    t.string "anexo"
     t.index ["atividade_id"], name: "index_horas_complementares_on_atividade_id"
     t.index ["categoria_id"], name: "index_horas_complementares_on_categoria_id"
     t.index ["pessoa_id"], name: "index_horas_complementares_on_pessoa_id"

@@ -29,35 +29,86 @@
 			</h2>
 
 			<div class="row">
-				<div class="col-12" style="margin-bottom: 10px;">
-					<!-- <p style="margin: 0;">  -->
-						<p class="label-attr"> Matricula:</p> 
-						<p class="label-info"><%= @pessoa.matricula %></p> 
-					<!-- </p> -->
-					<hr style="margin: 0;">
-				</div>
-				<div class="col-12" style="margin-bottom: 10px;">
-					<p style="margin: 0;"> 
-						<label class="label-attr"> Curso:</label> 
-						<label class="label-info"><%= @pessoa.curso.nome %></label> 
-					</p>
-					<hr style="margin: 0;">
+				<div class="col-12 container-label">
+					<div class="row">
+						<div class="col-4" style="padding-right: 0;">
+							<p class="label-attr"> Matricula</p> 
+						</div>
+						<div class="col-8 text-right"  style="padding-left: 0;">
+							<p class="label-info"><%= @pessoa.matricula %></p> 
+						</div>
+					</div>
+					<hr>
 				</div>
 
-				<div class="col-12" style="margin-bottom: 10px;">
-					<p style="margin: 0;"> 
-						<label class="label-attr"> Campus:</label> 
-						<label class="label-info"><%= @pessoa.campu.nome %></label> 
-					</p>
-					<hr style="margin: 0;">
+				<div class="col-12 container-label">
+					<div class="row">
+						<div class="col-4" style="padding-right: 0;">
+							<p class="label-attr"> Curso</p> 
+						</div>
+						<div class="col-8 text-right"  style="padding-left: 0;">
+							<p class="label-info"><%=  @pessoa.curso.nome %></p> 
+						</div>
+					</div>
+					<hr>
 				</div>
 
-				<div class="col-12" style="margin-bottom: 10px;">
-					<p style="margin: 0;"> 
-						<label class="label-attr"> Contato:</label> 
-						<label class="label-info"><%= @pessoa.contato %></label> 
-					</p>
-					<hr style="margin: 0;">
+				<div class="col-12 container-label">
+					<div class="row">
+						<div class="col-4" style="padding-right: 0;">
+							<p class="label-attr"> Campus</p> 
+						</div>
+						<div class="col-8 text-right"  style="padding-left: 0;">
+							<p class="label-info"><%= @pessoa.campu.nome %></p> 
+						</div>
+					</div>
+					<hr>
+				</div>
+
+				<div class="col-12 container-label">
+					<div class="row">
+						<div class="col-4" style="padding-right: 0;">
+							<p class="label-attr"> Contato</p> 
+						</div>
+						<div class="col-8 text-right"  style="padding-left: 0;">
+							<p class="label-info"><%= @pessoa.contato %></p> 
+						</div>
+					</div>
+					<hr>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-12" style="margin-top: 40px;">
+					<div class="row">
+
+						<div class="col-5 container-hours-left">
+							<p class="label-hours">
+								<span class="label-time"> <%= (!@horas_realizadas.blank?) ? @horas_realizadas.to_s.gsub('.',',') : '0' %> horas </span> 
+								<span class="label-complete"> realizadas </span> 
+							</p>
+						</div>
+
+						<div class="col-1 container-hours-center">
+							<div class="line-vertical"></div>
+						</div>
+
+						<div class="col-5 container-hours-right">
+							<p class="label-hours">
+								<span class="label-time"> <%= (!@horas_totais.blank?) ? @horas_totais.to_s.gsub('.',',') : '0' %> horas </span> 
+								<span class="label-complete"> necessárias </span> 
+							</p>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-12 container-sign-out">
+					<%= link_to(destroy_usuario_session_path, method: :delete, class: 'bn btn-purple-inverse') do %>
+                    	SAIR <i class="fa fa-sign-out"></i>
+                    <% end %>
 				</div>
 			</div>
 
@@ -66,3 +117,10 @@
 </div>
 
 <%= stylesheet_link_tag 'pessoas' %>
+<%= javascript_include_tag 'pessoas' %>
+
+<script type="text/javascript">
+	<% if !flash[:notice].blank? %>
+		alertComplete("<%= flash[:notice] %>");
+	<% end %>
+</script>

@@ -1,0 +1,2 @@
+<%= label_tag :atividade, 'Atividade da Categoria *' %><br>
+<%= select_tag(:atividade_id, options_for_select(@atividades_categoria.collect {|c| [c.nome, c.id]}), {prompt: 'Selecione uma opção', class: 'input-form atividade-categoria', required: true}) %>

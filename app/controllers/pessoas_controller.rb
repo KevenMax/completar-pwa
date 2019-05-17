@@ -3,8 +3,13 @@ class PessoasController < ApplicationController
   end
 
   def cadastro_final
-  	@cursos = Curso.where(ativo: true).order(:nome)
-    render layout: 'empty'
+    if !session[:pessoa].blank?
+      flash[:notice] = 'Você já completou seu cadastro!'
+      redirect_to pessoas_perfil_path
+    else
+    	@cursos = Curso.where(ativo: true).order(:nome)
+      render layout: 'empty'
+    end
   end
 
   def cadastrar
@@ -32,6 +37,8 @@ class PessoasController < ApplicationController
 
   def perfil
     @pessoa = Pessoa.find(session[:pessoa])
+    @horas_realizadas = @pessoa.horas_complementares.where(ativo: true).sum('quantidade_horas')
+    @horas_totais = @pessoa.curso.carga_atividades_complementares
   end
 
   def editar_perfil
