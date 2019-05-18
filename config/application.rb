@@ -22,6 +22,7 @@ module Completar
 
     config.assets.precompile += [ 'devise.css', 'pessoas.css', 'dashboards.scss', 'horas_complementares.scss']
     config.assets.precompile += [ 'devise.js', 'pessoas.js', 'dashboards.js', 'horas_complementares.js' ]
-    config.assets.precompile += %w( .svg .eot .woff .ttf )
+    config.assets.paths << Rails.root.join('public', 'assets', 'fonts')  
+    config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
   end
 end
