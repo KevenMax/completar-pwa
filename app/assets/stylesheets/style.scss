@@ -112,7 +112,7 @@ h2{
   border-radius: 40px;
 }
 .btn-purple{
-  background: #9479f2;
+  background: #B275F4;
   width: 250px;
   height: 35px;
   text-align: center;
@@ -131,12 +131,12 @@ h2{
 }
 .btn-purple-inverse{
   background: white;
-  width: 250px;
+  width: 100%;
   height: 35px;
   text-align: center;
-  border: 1px #9479f2 solid;
+  border: 1px #B275F4 solid;
   border-radius: 5px;
-  color: #9479f2;
+  color: #B275F4;
   display: block;
   padding-top: 5px;
 }
@@ -161,8 +161,43 @@ h2{
   border: 1px solid #C0C0C0;
   border-radius: 8px;
   width: 100%;
-  height: 70px;
+  height: auto;
   margin-bottom: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.label-categoria{
+  font-family: 'Comfortaa';
+  font-size: 13px;
+  color: #838383;
+  font-weight: 600;
+}
+
+.label-descricao{
+  font-family: 'Comfortaa';
+  font-size: 13px;
+  color: #838383;
+}
+
+.label-horas{
+  font-family: 'Comfortaa';
+  font-size: 20px;
+  color: #B275F4;
+  font-weight: 700;
+  opacity: 0.8;
+}
+
+.link-dropdown{
+  padding-top: 8px; 
+  font-family: 'Comfortaa'; 
+  font-size: 14px; 
+  color: #838383;
+  padding-bottom: 8px;
+}
+.link-dropdown.delete{
+  color: red;
+  opacity: 0.6;
 }
 
 select{

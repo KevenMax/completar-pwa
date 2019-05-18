@@ -1,0 +1,98 @@
+<div class="container-default">
+	<div class="container-header">
+		<div class="row">
+			<div class="col-1 col-sm-2" style="padding: 0; padding-left: 3%;">
+				<%= link_to(dashboards_index_path, class: 'link-back') do %>
+					<i class="fa fa-arrow-left icon-size"> </i>
+				<% end %>
+			</div>
+			<div class="col-11 col-sm-10" style="padding: 0;">
+				<h2> <%= @categoria.nome %> </h2>
+			</div>
+		</div>
+	</div>
+	<div class="container-body">
+		<div class="grafico">
+			<div id="graficoCategoria"></div>
+		</div>
+
+		<div class="container-list">
+			<% if @horas_complementares.blank? %>
+				<center>
+				<%= image_tag('open-box.png', style: 'width: 80px; height: 80px; margin-top: 30px;')%>
+				</center>
+				<p class="label-horas" style="font-size: 14px; margin-top: 10px; padding-left: 10px; color: #838383" align="center">Nenhuma hora complementar cadastrada ainda...</p>
+			<% end %>
+			<% @horas_complementares.each.with_index(1) do |hora_complementar,i| %>
+				<div class="container-item">
+					<div class="row">
+						<div class="col-4" style="padding-right: 0;">
+							<p class="label-horas" style="padding-top: 23px; padding-left: 10px;">
+								<%= hora_complementar.quantidade_horas.to_s.gsub('.',',') %>h
+							</p>
+						</div>
+						<div class="col-6" style="padding-left: 0; padding-right: 0;">
+							<p class="label-categoria" style="padding-top: 17px; padding-right: 5px; margin: 0;">
+								<%= (!hora_complementar.atividade.blank?) ? hora_complementar.atividade.nome : '' %>
+							</p>
+							<p class="label-descricao" style="padding-top: 3px; padding-right: 5px;">
+								<%= hora_complementar.descricao %>
+							</p>
+						</div>
+						<div class="col-2">
+							<div class="dropdown" style="padding-top: 23px;">
+								<a class="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="fa fa-ellipsis-v" style="font-size: 20px; color: #838383; opacity: 0.8;"></i>
+								</a>
+								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="margin: 0; padding: 0;">
+									<% if !hora_complementar.anexo.blank? %>
+										<%= link_to(dashboards_download_anexo_path(hora_complementar: hora_complementar.id), class: 'dropdown-item link-dropdown') do %>
+											Download do anexo
+										<% end %>
+										<hr style="margin-top: 2px; margin-bottom: 2px;">
+									<% end %>
+									<%= link_to(dashboards_deletar_hora_complementar_path(hora_complementar: hora_complementar.id, categoria: hora_complementar.categoria.id), class: 'dropdown-item link-dropdown delete') do %>
+										Excluir
+									<% end %>
+								 </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<%= stylesheet_link_tag 'dashboards' %>
+<%= javascript_include_tag 'dashboards' %>
+
+<script type="text/javascript">
+	var chart = c3.generate({
+        bindto: '#graficoCategoria',
+        data:{
+            columns: [
+                ['%', 0]
+            ],
+
+            type: 'gauge'
+        },
+        color: {
+            pattern: ['#b275f4', '#efefef']
+
+        },
+	    gauge: {
+	      width: 25
+	    }
+    });
+
+    setTimeout(function () {
+    	chart.load({
+        	columns: [['%', <%= @percentual_categoria %>]]
+    	});
+	}, 300);
+
+	<% if !flash[:notice].blank? %>
+		alertComplete("<%= flash[:notice] %>");
+	<% end %>
+</script>

@@ -1,7 +1,6 @@
 //= require c3.min.js
 //= require d3.min.js
-//= require raphael-min.js
-//= require justgage.min.js
+//= require Chart.min.js
 
 function alertComplete(notice){
 	setTimeout(function() {
@@ -14,3 +13,4 @@ function alertComplete(notice){
         toastr.info(notice, '');
     }, 000);
 }
+

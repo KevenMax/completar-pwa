@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   get 'campus/index'
 
   get 'dashboards/index'
+  get 'dashboards/categoria'
+  get 'dashboards/download_anexo'
+  get 'dashboards/deletar_hora_complementar'
 
   devise_for :usuarios
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -16,7 +16,7 @@
 
 			<div class="col-12 input-field" style="padding: 0;" id="atividadeCategoria">
 				<%= f.label :atividade, 'Atividade da Categoria *' %><br>
-				<%= f.select(:atividade_id, options_for_select(@categorias.collect {|c| [c.nome, c.id]}), {prompt: 'Selecione uma opção'}, class: 'input-form atividade-categoria', required: true, disabled: true) %>
+				<%= f.select(:atividade_id, options_for_select(@atividades.collect {|c| [c.nome, c.id]}, selected: @horas_complementar.atividade_id), {prompt: 'Selecione uma opção'}, class: 'input-form atividade-categoria', required: true, disabled: true) %>
 			</div>
 
 			<div class="col-12 input-field" style="padding: 0;">
@@ -26,7 +26,7 @@
 
 			<div class="col-12 input-field" style="padding: 0;">
 				<%= f.label :quantidade_horas, 'Quantidade de Horas *' %><br>
-				<%= f.text_field :quantidade_horas, class: 'input-form input-hours', required: true, maxlength: '6' %>
+				<%= f.number_field :quantidade_horas, class: 'input-form input-hours', required: true, maxlength: '6', min: '0.2' %>
 			</div>
 
 			<div class="col-12 input-field"  style="padding: 0;">
@@ -75,4 +75,7 @@
         decimal: ','
     });
 	
+	<% if !@horas_complementar.atividade_id.blank? %>
+		$(".atividade-categoria").prop('disabled',false);
+	<% end %>
 </script>

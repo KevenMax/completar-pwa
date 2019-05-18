@@ -8,63 +8,115 @@
 	</div>
 	<div class="container-body">
 		<div class="grafico">
-			<div id="gaugeArea"></div>
+			<div id="graficoGeral"></div>
 		</div>
 
 		<div class="container-list">
-			<% @categorias_horas_realizadas_limite.each do |categoria| %>
-				<div class="container-item">
-					<div class="row">
-						<div class="col-3">
-						</div>
-
-						<div class="col-lg-9">
-						</div>
-					</div>
-				</div>
-
-				<div class="container-item">
-					<div class="row">
-						<div class="col-3">
-						</div>
-
-						<div class="col-lg-9">
-						</div>
-					</div>
-				</div>
-
-				<div class="container-item">
-					<div class="row">
-						<div class="col-3">
-						</div>
-
-						<div class="col-lg-9">
+			<% if @categorias_horas_realizadas_limite.blank? %>
+				<center>
+				<%= image_tag('open-box.png', style: 'width: 80px; height: 80px; margin-top: 30px;')%>
+				</center>
+				<p class="label-horas" style="font-size: 14px; margin-top: 10px; padding-left: 10px; color: #838383" align="center">Nenhuma categoria cadastrada para este curso...</p>
+			<% end %>
+			<% @categorias_horas_realizadas_limite.each.with_index(1) do |categoria,i| %>
+				<%= link_to(dashboards_categoria_path(categoria: categoria[0]), style: 'text-decoration: none;') do %>
+					<div class="container-item">
+						<div class="row">
+							<div class="col-4" style="padding-right: 0;">
+								<canvas id="canvas<%= i %>" height="60" width="60" style="max-width: 162px !important; margin-top: 10px; margin-left: 8px;"></canvas>
+							</div>
+							<div class="col-8" style="padding-left: 0;">
+								<p class="label-categoria" style="padding-top: 25px; padding-right: 5px;">
+									<%= categoria[1] %>
+								</p>
+							</div>
 						</div>
 					</div>
-				</div>
+				<% end %>
 			<% end %>
 		</div>
 	</div>
 </div>
-<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js"> </script> 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.2.9/justgage.min.js"></script> -->
+
+<%= stylesheet_link_tag 'dashboards', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'dashboards', 'data-turbolinks-track': 'reload' %>
 
 <script type="text/javascript">
+	var chart = c3.generate({
+        bindto: '#graficoGeral',
+        data:{
+            columns: [
+                ['%', 0]
+            ],
 
-	var g4 = new JustGage({
-        id: 'gaugeArea',
-        value: 70,
-        min: '0',
-        max: 100,
-        symbol: '%',
-        pointerOptions: {
-          // toplength: 8,
-          // bottomlength: -20,
-          // bottomwidth: 6,
-          // color: '#8e8e93'
+            type: 'gauge'
         },
-        gaugeWidthScale: 0.4,
-        // counter: true,
-        relativeGaugeSize: true
-      });
+        color: {
+            pattern: ['#b275f4', '#efefef']
+
+        },
+	    gauge: {
+	      width: 25
+	    }
+    });
+
+    setTimeout(function () {
+    	chart.load({
+        	columns: [['%', <%= @percentual_horas_complementares %>]]
+    	});
+	}, 300);
+
+    <% @categorias_horas_realizadas_limite.each.with_index(1) do |categoria,i| %>
+
+		Chart.types.Doughnut.extend({
+		    name: "Doughtnut1",
+		    showTooltip: function() {
+		        this.chart.ctx.save();
+		        Chart.types.Doughnut.prototype.showTooltip.apply(this, arguments);
+		        this.chart.ctx.restore();
+		    },
+		    draw: function() {
+		        Chart.types.Doughnut.prototype.draw.apply(this, arguments);
+
+		        var width = this.chart.width,
+		            height = this.chart.height;
+
+		        var fontSize = (height / 75).toFixed(2);
+		        this.chart.ctx.font = fontSize + "em sans-serif";
+		        this.chart.ctx.textBaseline = "middle";
+		        this.chart.ctx.fillStyle = "#838383"
+		        var text = "<%= categoria[3].round(1) %>h",
+		            textX = Math.round((width - this.chart.ctx.measureText(text).width) / 2),
+		            textY = height / 2;
+
+		        this.chart.ctx.fillText(text, textX, textY);
+		    }
+		});
+
+		var canvas = document.getElementById("canvas<%= i %>");
+		var ctx = canvas.getContext("2d");
+
+		ctx.width = 118;
+		ctx.height = 118;
+
+
+		var data = [{
+		    value: <%= categoria[3].round(1) %>,
+		    color: "#b275f4"
+		},{
+		    value: <%= categoria[2].round(1) %>-<%= categoria[3].round(1) %>,
+		    color: "#efefef"
+		}];
+
+		var Doughtnut1Chart = new Chart(ctx).Doughtnut1(data, {
+		    // responsive: true,
+		    percentageInnerCutout: 75,
+		    maintainAspectRatio: false,
+		    segmentShowStroke: false
+		});
+	<% end %>
+
+	<% if !flash[:notice].blank? %>
+		alertComplete("<%= flash[:notice] %>");
+	<% end %>
 </script>

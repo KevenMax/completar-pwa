@@ -48,9 +48,7 @@ gem 'mini_magick', '~> 4.3'
 # Icons
 gem 'font-awesome-rails', '4.7.0.5'
 
-# gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
-# # Processing of images
-# gem 'mini_magick', '~> 4.3'
+gem 'serviceworker-rails'
 
 
 group :development, :test do

@@ -18,3 +18,4 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require toastr.min.js
+//= require serviceworker-companion
