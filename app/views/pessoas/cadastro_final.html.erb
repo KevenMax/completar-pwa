@@ -1,12 +1,12 @@
 <div class="container-default">
 	<div class="container-header">
 		<div class="row">
-			<div class="col-2 col-sm-3">
+			<div class="col-1 col-sm-2 col-md-2 col-lg-2" style="padding: 0; padding-left: 3%;">
 				<%= link_to(destroy_usuario_session_path, method: :delete, class: 'link-back') do %>
 					<i class="fa fa-arrow-left icon-size"> </i>
 				<% end %>
 			</div>
-			<div class="col-10 col-sm-9">
+			<div class="col-10 col-sm-10 col-md-7 col-lg-7" style="padding: 0;">
 				<h2> Concluir Cadastro </h2>
 			</div>
 		</div>
@@ -16,27 +16,27 @@
 		<%= form_tag({controller: 'pessoas', action: 'cadastrar'}, :multipart => true) do %>
 			<div class="input-field">
 				<%= label_tag :matricula, 'Matrícula *' %><br>
-				<%= number_field_tag :matricula, nil, class: 'input-form matricula' %>
+				<%= number_field_tag :matricula, nil, class: 'input-form matricula', required: true %>
 			</div>
 
 			<div class="input-field">
 				<%= label_tag :nome, 'Nome Completo *' %><br>
-				<%= text_field_tag :nome, nil, class: 'input-form' %>
+				<%= text_field_tag :nome, nil, class: 'input-form', required: true %>
 			</div>
 
 			<div class="input-field">
 				<%= label_tag :apelido, 'Como gostaria de ser chamado? *' %><br>
-				<%= text_field_tag :apelido, nil, class: 'input-form' %>
+				<%= text_field_tag :apelido, nil, class: 'input-form', required: true %>
 			</div>
 
 			<div class="input-field">
 				<%= label_tag :curso, 'Curso *' %><br>
-				<%= select_tag(:curso, options_for_select(@cursos.collect {|c| ["#{c.nome} - #{c.campu.cidade if !c.campu.blank?}", c.id]}), {prompt: 'Selecione uma opção', class: 'input-form'}) %>
+				<%= select_tag(:curso, options_for_select(@cursos.collect {|c| ["#{c.nome} - #{c.campu.cidade if !c.campu.blank?}", c.id]}), {prompt: 'Selecione uma opção', class: 'input-form', required: true}) %>
 			</div>
 
 			<div class="input-field">
 				<%= label_tag :contato, 'Contato *' %><br>
-				<%= text_field_tag :contato, nil, class: 'input-form celular' %>
+				<%= text_field_tag :contato, nil, class: 'input-form celular', required: true %>
 			</div>
 
 			<div class="input-field">

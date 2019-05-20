@@ -30,7 +30,7 @@ class HorasComplementaresController < ApplicationController
     		flash[:notice] = 'Atividade Complementar cadastrada com Sucesso!'
     		redirect_to dashboards_index_path
     	else
-        raise @horas_complementar.errors.inspect
+        # raise @horas_complementar.errors.inspect
     		flash[:notice] = 'Ocorreu algum problema ao realizar o cadastro, tente novamente.'
     		render 'index'
     	end

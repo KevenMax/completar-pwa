@@ -7,13 +7,14 @@ Rails.application.routes.draw do
   # get 'horas_complementares/index'
   # post 'horas_complementares/create'
   # post 'horas_complementares/update'
-
   get 'pessoas/index'
   get 'pessoas/cadastro_final'
   get 'pessoas/perfil'
   get 'pessoas/editar_perfil'
   post 'pessoas/cadastrar'
   post 'pessoas/editar'
+  resources :pessoas do
+  end
 
   get 'atividades/index'
 

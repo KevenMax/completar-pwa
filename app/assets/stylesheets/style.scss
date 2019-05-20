@@ -62,6 +62,10 @@ h2{
   color: #b275f4;
   text-align: center;
 }
+.header-link{
+  text-align: left; 
+  padding-left: 25%;
+}
 .icon-size{
   font-size: 20px;
 }
@@ -93,6 +97,17 @@ h2{
   font-family: 'Comfortaa';
   color: #989898;
 }
+.container-description{
+  margin-top: 30px;
+  h2{
+    color: #838383;
+    font-weight: 600;
+    word-break: break-word;
+  }
+  span{
+    color: #B275F4;
+  }
+}
 .input-field{
   margin-bottom: 20px; 
 }
@@ -113,7 +128,7 @@ h2{
 }
 .btn-purple{
   background: #B275F4;
-  width: 250px;
+  width: 100%;
   height: 35px;
   text-align: center;
   border-radius: 40px;
@@ -157,6 +172,9 @@ h2{
 .container-list{
   margin-top: 40px;
 }
+.container-list.categoria{
+  margin-top: 30px;
+}
 .container-item{
   border: 1px solid #C0C0C0;
   border-radius: 8px;
@@ -172,6 +190,7 @@ h2{
   font-size: 13px;
   color: #838383;
   font-weight: 600;
+  word-break: break-word;
 }
 
 .label-descricao{
@@ -247,5 +266,11 @@ input {
     .option-item:focus{
       color: #b275f4;
     }
+  }
+}
+
+@media(min-width: 400px){
+  .header-link{
+    padding-left: 32%;
   }
 }

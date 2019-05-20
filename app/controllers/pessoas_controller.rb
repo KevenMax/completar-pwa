@@ -42,11 +42,16 @@ class PessoasController < ApplicationController
   end
 
   def editar_perfil
+    @pessoa = Pessoa.find(session[:pessoa])
+    @cursos = Curso.where(ativo: true).order(:nome)
   end
 
-  def editar
+  def show
+  end
+
+  def update
     pessoa = Pessoa.find(session[:pessoa])
-    pessoa.update(nome: params[:nome], apelido: params[:apelido], matricula: params[:matricula], curso_id: params[:curso], campu_id: Curso.find(params[:curso]).campu_id, contato: params[:contato])
+    pessoa.update(nome: params[:pessoa][:nome], apelido: params[:pessoa][:apelido], matricula: params[:pessoa][:matricula], curso_id: params[:pessoa][:curso], campu_id: Curso.find(params[:pessoa][:curso]).campu_id, contato: params[:pessoa][:contato], foto: params[:pessoa][:foto])
     flash[:notice] = 'Perfil atualizado com sucesso!'
     redirect_to pessoas_perfil_path
   end
