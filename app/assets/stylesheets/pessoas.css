@@ -3,7 +3,7 @@ hr{
 }
 .image-profile{
 	border-radius: 100%;
-	margin-left: 35%;
+	margin-left: 38%;
 	width: 100px;
 	height: 100px;
 	/*height: 70%;*/
@@ -95,18 +95,32 @@ hr{
 .container-sign-out{
 	margin-top: 10px;
 }
-@media(min-width: 402px){
+@media(min-width: 360px){
 	.image-profile{
-		margin-left: 40%;
+		margin-left: 42%;
 	}
 }
 
-@media(min-width: 470px){
+@media(min-width: 402px){
+	.image-profile{
+		margin-left: 43%;
+	}
+}
+@media(min-width: 430px){
+	.image-profile{
+		margin-left: 43%;
+	}
+}
+@media(min-width: 460px){
 	.image-profile{
 		margin-left: 45%;
 	}
 }
-
+@media(min-width: 540px){
+	.image-profile{
+		margin-left: 47%;
+	}
+}
 @media(min-width: 600px){
 	.image-profile{
 		margin-left: 49%;
