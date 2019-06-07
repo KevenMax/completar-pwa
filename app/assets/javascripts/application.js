@@ -12,10 +12,15 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require_tree .
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
 //= require toastr.min.js
 //= require serviceworker-companion
+
+$(window).ready(() => {
+    $('#preloader .inner').fadeOut();
+    $('#preloader').delay(350).fadeOut('slow'); 
+    $('body').delay(350).css({'overflow': 'visible'});
+});
