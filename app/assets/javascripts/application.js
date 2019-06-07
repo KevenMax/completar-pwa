@@ -19,7 +19,7 @@
 //= require toastr.min.js
 //= require serviceworker-companion
 
-$(window).ready(() => {
+$(window).ready(function() {
     $('#preloader .inner').fadeOut();
     $('#preloader').delay(350).fadeOut('slow'); 
     $('body').delay(350).css({'overflow': 'visible'});
